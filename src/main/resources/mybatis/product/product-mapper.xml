@@ -28,11 +28,21 @@
         SELECT * FROM neSavProd 
     </select>
     
-    <!-- 현재 진행중인 상품 정보 가져오기 -->
-    <select id="selectNowProducts" resultType="NeSavProdDTO">
-        SELECT * FROM neSavProd 
+
+<!-- 현재 진행중인 상품 정보 가져오기 -->
+<select id="selectNowProducts" resultType="NeSavProdDTO">
+    SELECT * 
+    FROM neSavProd
     WHERE end_date > SYSDATE OR end_date IS NULL
-    </select>
+    ORDER BY 
+        CASE 
+            WHEN SUBSCRIPTION_PERIOD = '1개월' THEN 1
+            WHEN SUBSCRIPTION_PERIOD = '3개월' THEN 2
+            WHEN SUBSCRIPTION_PERIOD = '6개월' THEN 3
+            WHEN SUBSCRIPTION_PERIOD = '1년' THEN 4
+        END
+</select>
+
 
     <!-- 특정 상품 코드에 따른 상품 정보 가져오기 -->
     <select id="selectProductByCode" parameterType="String" resultType="NeSavProdDTO" >
