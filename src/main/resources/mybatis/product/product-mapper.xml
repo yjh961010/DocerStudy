@@ -36,10 +36,10 @@
     WHERE end_date > SYSDATE OR end_date IS NULL
     ORDER BY 
         CASE 
-            WHEN SUBSCRIPTION_PERIOD = '1개월' THEN 1
-            WHEN SUBSCRIPTION_PERIOD = '3개월' THEN 2
-            WHEN SUBSCRIPTION_PERIOD = '6개월' THEN 3
-            WHEN SUBSCRIPTION_PERIOD = '1년' THEN 4
+            WHEN subscription_period = '1개월' THEN 1
+            WHEN subscription_period = '3개월' THEN 2
+            WHEN subscription_period = '6개월' THEN 3
+            WHEN subscription_period = '1년' THEN 4
         END
 </select>
 
