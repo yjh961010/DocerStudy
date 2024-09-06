@@ -266,7 +266,6 @@
              </div>
     </div>
 </main>
-<button type="button" class="btn btn-primary" onclick="openModal()">충전하기</button>
 
 <!-- 모달 구조 -->
 <div id="myModal" class="modal">
