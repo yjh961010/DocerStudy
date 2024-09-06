@@ -47,18 +47,19 @@ public class SpringSecurityConfig {
         return http.build();
     }
 
-	/*
-	 * @Bean public FilterRegistrationBean<IpAddressAccessControlFilter>
-	 * ipAddressAccessControlFilter() { String adminIp =
-	 * env.getProperty("admin.ipaddress"); // properties에서 IP 주소 가져오기
-	 * IpAddressAccessControlFilter filter = new
-	 * IpAddressAccessControlFilter(adminIp);
-	 * FilterRegistrationBean<IpAddressAccessControlFilter> registrationBean = new
-	 * FilterRegistrationBean<>(); registrationBean.setFilter(filter);
-	 * registrationBean.addUrlPatterns("/admin/*"); // 관리자 페이지에만 적용
-	 * registrationBean.setOrder(1); // 필터 순서, 숫자 낮을수록 높은 우선순위 return
-	 * registrationBean; }
-	 */
+	
+	  @Bean 
+	  public FilterRegistrationBean<IpAddressAccessControlFilter>
+	  ipAddressAccessControlFilter() { String adminIp =
+	  env.getProperty("admin.ipaddress"); // properties에서 IP 주소 가져오기
+	  IpAddressAccessControlFilter filter = new
+	  IpAddressAccessControlFilter(adminIp);
+	  FilterRegistrationBean<IpAddressAccessControlFilter> registrationBean = new
+	  FilterRegistrationBean<>(); registrationBean.setFilter(filter);
+	  registrationBean.addUrlPatterns("/admin/*"); // 관리자 페이지에만 적용
+	  registrationBean.setOrder(1); // 필터 순서, 숫자 낮을수록 높은 우선순위 
+	  return registrationBean; }
+	 
 
     @Bean
     WebSecurityCustomizer webSecurityCustomizer() {

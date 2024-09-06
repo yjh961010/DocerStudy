@@ -285,16 +285,22 @@
 						</thead>
 						<tbody>
 							<c:forEach var="dto" items="${sessionScope.winnerList}" varStatus="status">
-									<tr>
-										<td width="50%" align="left"><span>&nbsp;&nbsp;</span> 
-											${dto.product_name}
-										</td>
-										<td align="right" width="50%">
-										<fmt:formatNumber value="${dto.accumulated_amount}"
-									type="number" groupingUsed="true" />
-										원</td>
-									</tr>
-							</c:forEach>
+      						  <tr>
+            					<td width="50%" align="left"><span>&nbsp;&nbsp;</span> 
+               					 <c:choose>
+                    				<c:when test="${fn:length(dto.product_name) > 6}">
+                      				  ${fn:substring(dto.product_name, 0, 6)}...
+                    				</c:when>
+                    			<c:otherwise>
+                      				  ${dto.product_name}
+                    			</c:otherwise>
+                				</c:choose>
+           					 </td>
+           				<td align="right" width="50%">
+                			<fmt:formatNumber value="${dto.accumulated_amount}" type="number" groupingUsed="true" /> 원
+            			</td>
+        				</tr>
+    				</c:forEach>
 						</tbody>
 					</table>
 				</div>

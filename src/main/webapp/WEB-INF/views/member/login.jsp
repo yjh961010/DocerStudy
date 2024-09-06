@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-asdsadaaa
 <p>로그인 실패: ${param.message}</p>
 <c:if test="${param.error == 'true'}">
     <div>

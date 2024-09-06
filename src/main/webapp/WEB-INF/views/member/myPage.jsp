@@ -58,10 +58,17 @@
         <table class="profile-table">
             <tr>
                 <td width="50%" class="profile-image-cell">
-                    <img src="${pageContext.request.contextPath}/img/${profile.profile}" alt="프로필 이미지" class="profile-img"/>
-                </td>
+    <c:choose>
+        <c:when test="${empty profile.profile}">
+            <img src="${pageContext.request.contextPath}/img/prof.jpg" alt="프로필 이미지" class="profile-img"/>
+        </c:when>
+        <c:otherwise>
+            <img src="${pageContext.request.contextPath}/img/${profile.profile}" alt="프로필 이미지" class="profile-img"/>
+        </c:otherwise>
+    </c:choose>
+</td>
                 <td class="profile-info-cell">
-                    <div class="profile-info">
+                    <div class="profile-info" align="center">
                         <strong class="itemfont col" id="nickNameArea">
                             환영합니다<br>
                             <sec:authentication property="principal.username"/>님
@@ -181,7 +188,6 @@
                                         <div class="product-actions">
 	                                        <form action="<c:url value='/proProduct/autoInput.do' />" method="post">
 	                                            <input type="hidden" name="product_code" value="${product.PRODUCT_CODE}">
-	                                            ${product.PRODUCT_CODE}
 	                                        	<button type="submit" class="btn btn-primary">자동 결제 설정</button>
 	                                        </form>
                                             <form action="<c:url value='/proProduct/cancel' />" method="post">

@@ -2,11 +2,34 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="../header.jsp"/>
 
-
 <link rel="stylesheet" type="text/css" href="/css/admin/addProdStyle.css">
+
+<script>
+function validateForm() {
+    // Get form elements
+    const productName = document.getElementById('product_name').value;
+    const productImage = document.getElementById('prodcut_image').files.length;
+    const baseRate = document.getElementById('base_rate').value;
+    const goldenballRate = document.getElementById('goldenball_rate').value;
+    const terminationConditions = document.getElementById('termination_conditions').value;
+    const earlyFee = document.getElementById('early_fee').value;
+    const minimumDeposit = document.getElementById('minimum_deposit').value;
+    const maximumDeposit = document.getElementById('maximum_deposit').value;
+    const startDate = document.getElementById('start_date').value;
+    const productDescription = document.getElementById('product_description').value;
+    
+    
+    if (!productName || productImage === 0 || !baseRate || !goldenballRate || !terminationConditions || !earlyFee || !minimumDeposit || !maximumDeposit || !startDate || !productDescription) {
+        alert('모든 항목을 입력해 주세요.');
+        return false; 
+    }
+    return true; 
+}
+</script>
+
 <main>
 <div class="add-product-page">
-    <form name="f" action="/admin/addProdPro.do" method="POST" enctype="multipart/form-data">
+    <form name="f" action="/admin/addProdPro.do" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
     <h2>상품 추가</h2>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <input type="hidden" name="product_status" value="활성">

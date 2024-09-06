@@ -25,7 +25,7 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 	@Transactional
-	//@CacheEvict(value = "members", allEntries = true) -> 멤버추가할시 전체멤버캐시초기화
+	@CacheEvict(value = "members", allEntries = true)//멤버추가할시 전체멤버캐시초기화
 	public int signupPro(MemberDTO member) {
 		member.setGrade("ROLE_1");
 		member.setPassword(bcryptPasswordEncoder.encode(member.getPassword()));
@@ -48,7 +48,7 @@ public class MemberService {
 	public MemberDTO findByIdName (MemberDTO member) {
 		return memberDAO.findByIdName(member);
 	}
-	//@CacheEvict(value = "members", allEntries = true) redis설치하면 주석풀어주세여
+	@CacheEvict(value = "members", allEntries = true) //redis설치하면 주석풀어주세여
 	public int updatePw(MemberDTO member) {
 		member.setPassword(bcryptPasswordEncoder.encode(member.getPassword()));
 		return memberDAO.updatePw(member);

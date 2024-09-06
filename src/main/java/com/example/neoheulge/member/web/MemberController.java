@@ -75,25 +75,30 @@ public class MemberController {
 	public String signup() {
 		return "member/signup";
 	}
-	
-	@PostMapping("/signupPro.do")
-	public String signupPro(MemberDTO member,@RequestParam(name = "file", required = false)MultipartFile mf) {
-		try {
-	 String filename = mf.getOriginalFilename();
-   	 String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-   	 String uniqueFilename = timeStamp + "_" + filename;
 
-   	 String path = servletcontext.getRealPath("/img");
-     File file = new File(path, uniqueFilename);
-     mf.transferTo(file);
-     member.setProfile(uniqueFilename);
-		}catch (Exception e) {
-            e.printStackTrace();
-           }
-		memberservice.signupPro(member);
-		return "redirect:/";
+	@PostMapping("/signupPro.do")
+	public String signupPro(MemberDTO member, @RequestParam(name = "file", required = false) MultipartFile mf) {
+	    if (mf != null && !mf.isEmpty()) {
+	        try {
+	            String filename = mf.getOriginalFilename();
+	            String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+	            String uniqueFilename = timeStamp + "_" + filename;
+
+	            String path = servletcontext.getRealPath("/img");
+	            File file = new File(path, uniqueFilename);
+	            mf.transferTo(file);
+	            member.setProfile(uniqueFilename);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }else {
+	    	member.setProfile("prof.jpg");
+	    }
+	    memberservice.signupPro(member);
+	    return "redirect:/";
 	}
-    
+	
+	
     @GetMapping("/findid.do")
     public String findId(HttpServletRequest req) {
     	return "member/findid";

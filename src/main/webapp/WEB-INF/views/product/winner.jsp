@@ -13,8 +13,8 @@
             padding: 20px;
             background-color: #f4f4f4;
         }
-        .container {
-            max-width: 800px;
+        .winner_container {
+            max-width: 1200px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
@@ -53,7 +53,7 @@
 <title>Insert title here</title>
 </head>
  <jsp:include page="../header.jsp"/>
-<div class="container">
+<div class="winner_container">
         <h1>당첨자 목록</h1>
         <table>
             <thead>
