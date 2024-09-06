@@ -98,8 +98,8 @@ public class AcountService {
     	return sqlSession.delete("deleteAllAcount",member_id);
     }
     
-    public String selectPrimary() {
-    	return sqlSession.selectOne("selectPrimary");
+    public String selectPrimary(String member_id) {
+    	return sqlSession.selectOne("selectPrimary",member_id);
     }
     
     public List<NeAcountDTO> selectAcount(String member_id) {

@@ -79,10 +79,11 @@
         DELETE FROM neacount WHERE member_id = #{member_id}
     </delete>
     
-    <select id="selectPrimary" resultType="String">
+    <select id="selectPrimary" parameterType="String" resultType="String">
 		select acount_number
 		from neacount
 		where acount_status = 'Y'
+		AND member_id=#{member_id}
 	</select>
 	
 	<select id="selectAcount" parameterType="String" resultType="NeAcountDTO">

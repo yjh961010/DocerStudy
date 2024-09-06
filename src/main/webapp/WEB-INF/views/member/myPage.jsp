@@ -181,7 +181,7 @@
                                         <div class="product-actions">
 	                                        <form action="<c:url value='/proProduct/autoInput.do' />" method="post">
 	                                            <input type="hidden" name="product_code" value="${product.PRODUCT_CODE}">
-	                                            
+	                                            ${product.PRODUCT_CODE}
 	                                        	<button type="submit" class="btn btn-primary">자동 결제 설정</button>
 	                                        </form>
                                             <form action="<c:url value='/proProduct/cancel' />" method="post">

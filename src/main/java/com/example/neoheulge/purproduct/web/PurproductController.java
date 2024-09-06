@@ -109,7 +109,7 @@ public class PurproductController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	    String username = authentication.getName();
 	    
-		String Ynum = acountService.selectPrimary();
+		String Ynum = acountService.selectPrimary(username);
 		List<NeAcountDTO> list = acountService.selectAcount(username);
 		System.out.println("dto : "+Ynum);
 		
