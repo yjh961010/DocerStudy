@@ -17,8 +17,8 @@ public class NotificationService {
     
     public void sendErrorNotification(String subject, String errorMessage) {
         SimpleMailMessage message = new SimpleMailMessage();
-        //message.setFrom("yjhwkdgh961010@gmail.com");
-       //message.setTo("yjhwkdgh961010@gmail.com"); // 수신자 이메일
+        message.setFrom("yjhwkdgh961010@gmail.com");
+       message.setTo("yjhwkdgh961010@gmail.com"); // 수신자 이메일
         message.setSubject(subject);
         message.setText("Scheduler error occurred:\n\n" + errorMessage);
 
